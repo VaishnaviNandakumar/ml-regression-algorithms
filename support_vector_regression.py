@@ -6,7 +6,7 @@ import pandas as pd
 # Importing the dataset
 dataset = pd.read_csv('Position_Salaries.csv')
 X = dataset.iloc[:, 1:2].values
-y = dataset.iloc[:, 2].values
+y = dataset.iloc[:, 2:3].values
 
 # Feature Scaling (Required here cause SVR is a less common module)
 from sklearn.preprocessing import StandardScaler
@@ -21,7 +21,7 @@ regressor = SVR(kernel = 'rbf')
 regressor.fit(X,y)
 
 #Predicting results
-y_pred = regressor.predict([[6.5]])
+y_pred = sc_y.inverse_transform(regressor.predict(sc_X.transform(np.array([[6.5]]))) 
 
 #Visualizing Linear Regression Result
 plt.scatter(X, y , color ='red')
