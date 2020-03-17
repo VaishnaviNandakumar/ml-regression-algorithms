@@ -9,13 +9,6 @@ dataset = pd.read_csv('Position_Salaries.csv')
 X = dataset.iloc[:, 1:2].values
 y = dataset.iloc[:, 2:3].values
 
-# Feature Scaling (Required here cause SVR is a less common module)
-from sklearn.preprocessing import StandardScaler
-sc_X = StandardScaler()
-sc_y = StandardScaler()
-X = sc_X.fit_transform(X)
-y = sc_y.fit_transform(y)
-
 #Fitting Decision Tree Reegressor to Dataset
 from sklearn.ensemble import RandomForestRegressor
 regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
